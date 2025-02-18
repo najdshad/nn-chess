@@ -9,3 +9,5 @@ INIT_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
 6: color -> 0 = white, 1 = black
 5-3 : piece type -> 000 = Pawn, 001 = Knight, 010 = Bishop, 011 = Rook, 100 = Queen, 101 = King
 2-0 : flags -> Can be used for en passant, castling rights, promotions
+
+DEFINE STATE

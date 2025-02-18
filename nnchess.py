@@ -1,8 +1,11 @@
 import numpy as np
 
+INIT_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+
 class Piece:
-    def __init__(self, piece: np.byte):
+    def __init__(self, piece: np.byte, position: np.array):
         self.piece = piece
+        self.position = position
 
     def name(self):
         type = (self.piece >> 3) & 0b111  # Extract bits 5-3
@@ -30,17 +33,30 @@ class Piece:
                 name += 'King'
 
         return name
-
-x = Piece(0x88)
-
-print(x.name())
-
-
-# def fen_to_board(fen):
-#     for row in fen.split('/'):
+    
+    def move(self):
+        pass
 
 
-bitboard = np.array(np.zeros((8, 8)), dtype=bool)
-INIT_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
-fen = INIT_FEN
+class Board:
+    def __init__(self):
+        self.fen = INIT_FEN
+        self.bitboard = np.array(np.zeros((8, 8)), dtype=bool)
+        self.pieces = np.array(dtype=Piece)
 
+    def add_piece(self, piece: Piece):
+        self.pieces.append(piece)
+
+    def initialize_board(self):
+        for piece in self.pieces:
+            pass
+
+
+
+
+if __name__ == "__main__":
+    x = Piece(0x88)
+    board = Board()
+    print(x.name())
+    print(board.fen_to_board(INIT_FEN))
+    
